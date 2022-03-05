@@ -1,0 +1,35 @@
+<div class="container">
+  <%= render "layouts/message", {text: @book} %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "layouts/info", {user: @book.user, book: @book_new} %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td class="user-profile-image">
+              <%= link_to user_path(@user) do %>
+              <%= image_tag @user.get_image, size:"100x100" %> <br>
+              <%= @user.name %>
+              <% end %>
+            </td>
+            <td class="content-title"><%= link_to @book.title %></td>
+            <td class="content-opinion"><%= @book.body %></td>
+            <% if @book.user == current_user %>
+            <td class="buttons">
+              <div class="btn btn-sm btn-succes edit">
+                <%= link_to "Edit", edit_book_path(@book.id) %>
+              </div>
+            <td class="buttons">
+              <div class="btn btn-danger delete">
+                <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm"=>"Are you sure?" %>
+              </div>
+            </td>
+            </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>

@@ -1,0 +1,23 @@
+  <div class="messages row">
+  <% if text.errors.any? %>
+  <div class="error-box">
+    <div class="error-text">
+      <% if text == @user %>
+      <%= text.errors.count %>erros prohibited this user from being saved:
+      <% else %>
+      <%= text.errors.count %>errors prohibited this book from being saved:
+      <% end %>
+    </div>
+    <ul class="errors">
+      <% text.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="succes">
+    <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+    <% end %>
+  </div>
+</div>

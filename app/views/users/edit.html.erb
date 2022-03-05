@@ -1,0 +1,19 @@
+<div class="container">
+  <%= render "layouts/message", {text: @user} %>
+  <div class="edit-form-box row">
+    <h2 Class="sub-title">User info</h2><br>
+    <%= form_with model:@user do |f| %>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
+      <%= f.label :image %><br>
+      <%= f.file_field :profile_image %><br>
+      <%= f.label :introduction %><br>
+      <%= f.text_area :introduction %><br>
+    </div>
+    <div class="button">
+      <%= f.submit "Update User" %>
+    </div>
+    <% end %>
+  </div>
+</div>

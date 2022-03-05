@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <h1>Editing Book</h1>
+    <%= render "layouts/message", {text: @book} %>
+      <div class="col-xs-12 form_box">
+       <%= form_with model:@book, local:true do |f| %>
+
+    <div class="field">
+      <% if @book.user == current_user %>
+      <p>Title</p>
+      <%= f.text_field :title %>
+      <p>Opinion</p>
+      <%= f.text_area :body %>
+      <% end %>
+    </div>
+    <div class="button btn btn-succes">
+      <%= f.submit "Update Book" %>
+    </div>
+    <% end %>
+
+      <div class="menu">
+        <p><%= link_to "Show", book_path(@book) %> | <%= link_to "Back", books_path %> </p>
+      </div>
+    </div>
+  </div>
+</div>
